@@ -1,0 +1,78 @@
+<h1>Registration Requests</h1>
+
+<table mat-table [dataSource]="UserRequestsList" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="compName">
+      <th mat-header-cell *matHeaderCellDef> Company Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="contactNumber">
+      <th mat-header-cell *matHeaderCellDef> Contact # </th>
+      <td mat-cell *matCellDef="let element"> {{element.contactNumber}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.emailAddress}} </td>
+    </ng-container>
+
+     <!-- Symbol Column -->
+     <ng-container matColumnDef="shipmentsPerWeek">
+        <th mat-header-cell *matHeaderCellDef> Shipments Per Week </th>
+        <td mat-cell *matCellDef="let element"> {{element.shipmentsPerWeek}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+     <ng-container matColumnDef="cnicNumber">
+        <th mat-header-cell *matHeaderCellDef> CNIC # </th>
+        <td mat-cell *matCellDef="let element"> {{element.cnicNumber}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+     <ng-container matColumnDef="accountNumber">
+        <th mat-header-cell *matHeaderCellDef> Account # </th>
+        <td mat-cell *matCellDef="let element"> {{element.accountNumber}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+     <ng-container matColumnDef="websiteUrl">
+        <th mat-header-cell *matHeaderCellDef> Website </th>
+        <td mat-cell *matCellDef="let element"> {{element.websiteUrl}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+     <ng-container matColumnDef="productType">
+        <th mat-header-cell *matHeaderCellDef> Product Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.productType}} </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>  </th>
+        <td mat-cell *matCellDef="let element"> 
+        <button mat-button (click)="approveRegistration(element.id)">Approve</button>  
+        <button mat-button (click)="rejectRegistration(element.id)">Reject</button>  
+        </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  

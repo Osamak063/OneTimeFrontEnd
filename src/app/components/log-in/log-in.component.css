@@ -1,0 +1,10 @@
+.overrideboxpadding{
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-bottom: 20px !important;
+    padding-top: 20px !important;
+}
+
+.background{
+    background-image: url("/../assets/logo.jpg");
+}

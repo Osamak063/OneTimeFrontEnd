@@ -1,36 +1,93 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<div class="login-wrapper background" fxLayout="row" fxLayoutAlign="center center">
   <mat-card class="box">
+    <img src="assets\logo2.jpg" style="width: 330px; height: 80px;">
     <mat-card-header>
-      <mat-card-title>Register</mat-card-title>
     </mat-card-header>
 
-    <form class="example-form">
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
 
       <mat-card-content>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Username">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Password">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <mat-label>Choose a role...</mat-label>
-          <mat-select [(value)]="selected">
-            <mat-option [value]="roles" *ngFor="let roles of Roles">{{roles}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
+        <table style="width: 100%;">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Name" name="name" formControlName="name" required>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Company Name" name="companyName" formControlName="companyName" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Contact Number" name="contactNumber" formControlName="contactNumber"
+                  required>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input type="email" matInput placeholder="Email Address" name="email" formControlName="email" required>
+              </mat-form-field>
+              <div *ngIf="(emailAddress.invalid && emailAddress.touched) || emailAddress.dirty">
+                <small *ngIf="emailAddress.errors?.required" class="text-danger">Email is required</small>
+                <!--question mark(?) is a safe navigation operator-->
+                <small *ngIf="emailAddress.errors?.pattern" class="text-danger">Please provide a valid email
+                  address</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Shipments Per Week" name="shipmentsPerWeek"
+                  formControlName="shipmentsPerWeek" required>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="CNIC Number" name="cnicNumber" formControlName="cnicNumber" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Address" name="address" formControlName="address" required>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Account Number" name="accountNumber" formControlName="accountNumber"
+                  required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Website URL" name="websiteUrl" formControlName="websiteUrl" required>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Product Type</mat-label>
+                <mat-select name="SelectedProductTypeId" formControlName="productType">
+                  <mat-option [value]="productType.id" *ngFor="let productType of ProductTypeList">{{productType.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
       </mat-card-content>
 
-      <button mat-stroked-button color="accent" class="btn-block">Register</button>
-
+      <button mat-stroked-button [ngStyle]="{'color': registerForm.valid ? 'blue' : 'grey'}" style="width: 150px;"
+        class="btn-block" type="submit" [disabled]="!registerForm.valid">Register</button>
+      <button mat-stroked-button style="color: blue; width: 150px; margin-left: 20px" class="btn-block"
+        (click)="onLoginAction()">Log In</button>
     </form>
   </mat-card>
 </div>

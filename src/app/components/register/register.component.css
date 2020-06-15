@@ -1,0 +1,7 @@
+.background{
+    background-image: url("/../assets/logo.jpg");
+}
+
+.mat-stroked-button :disabled{
+    color: grey;
+} 

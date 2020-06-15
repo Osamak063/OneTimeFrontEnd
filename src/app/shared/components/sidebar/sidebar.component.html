@@ -1,0 +1,15 @@
+<mat-nav-list>
+    <div class="profile-card">
+        <div class="header">
+            <h2>{{userInfo.userName}}</h2>
+            <h4>{{userInfo.email}}</h4>
+        </div>
+        <!-- <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Hello123"> -->
+    </div>
+<mat-divider></mat-divider>
+<div *ngFor="let menu of MenuItems"> 
+    <a mat-list-item id="routeLink" routerLinkActive="list-item-active" [routerLink]="menu.navigation">{{menu.name}}</a>
+</div>
+<mat-divider></mat-divider>
+<a mat-list-item routerLinkActive="list-item-active" routerLink="/articles">Settings</a>
+</mat-nav-list>

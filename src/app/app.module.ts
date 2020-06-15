@@ -19,6 +19,15 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 /* Components */
 import { LogInComponent } from './components/log-in/log-in.component';
 import { RegisterComponent } from './components/register/register.component';
+import { DefaultModule } from './layouts/default/default.module';
+import { MatToolbarModule } from '@angular/material';
+import { AuthenticationService } from './services/authentication/authentication.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LookupService } from './services/lookup/lookup.service';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
+
+
 
 
 @NgModule({
@@ -26,8 +35,6 @@ import { RegisterComponent } from './components/register/register.component';
     AppComponent,
     LogInComponent,
     RegisterComponent,
-    RegisterComponent,
-    LogInComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +43,14 @@ import { RegisterComponent } from './components/register/register.component';
     AngularMaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    DefaultModule,
+    MatToolbarModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthenticationService,LookupService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
