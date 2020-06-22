@@ -10,6 +10,8 @@ import { UserRequestsComponent } from './layouts/default/user-requests/user-requ
 import { UserRequestsResolver } from './resolvers/register/user-requests-resolver';
 import { AuthGuard } from './helpers/auth.guard';
 import { LoggedinGuard } from './helpers/loggedin.guard';
+import { PlaceOrderComponent } from './layouts/default/place-order/place-order.component';
+import { PlaceOrderResolver } from './resolvers/orders/place-order-resolver';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -25,6 +27,12 @@ const routes: Routes = [
     path: 'user-requests',
     component : UserRequestsComponent,
     resolve : {UserRequestsList : UserRequestsResolver},
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'place-order',
+    component : PlaceOrderComponent,
+    resolve : {placeOrderRequiredData : PlaceOrderResolver},
     canActivate: [AuthGuard]
   }]  
 }];

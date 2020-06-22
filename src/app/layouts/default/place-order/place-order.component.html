@@ -1,0 +1,190 @@
+<h2>Place Order</h2>
+<div class="order-wrapper">
+  <div class="order-details">
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="step === 0" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h3>Delivery Information</h3>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="body-wrap">
+          <div class="order-delivery-form">
+            <form [formGroup]="orderdeliveryForm" [class.disable-inputs]="viewExpenseItem">
+              <div style="display: flex;">
+                <div>
+                  <label class="label">Consignee Name*</label><br>
+                  <mat-form-field appearance="outline">
+                    <input matInput formControlName="name" panelClass="select-pos" placeholder="Name" />
+                  </mat-form-field>
+                  <p class="invalid"
+                    *ngIf="orderdeliveryForm.get('name').hasError('required') && orderDeliverySubmitted">
+                    Consignee name is required
+                  </p>
+                </div>
+
+                <div style="margin-left: 40px;">
+                  <label class="label">Consignee Number*</label><br>
+                  <mat-form-field appearance="outline">
+                    <input placeholder="Contact Number" formControlName="number" matInput />
+                  </mat-form-field>
+                  <p class="invalid"
+                  *ngIf="orderdeliveryForm.get('number').hasError('required') && orderDeliverySubmitted">
+                    Contact number is required
+                  </p>
+                </div>
+              </div>
+              <div style="display: flex;">
+                <div>
+                  <label class="label">City*</label><br>
+                  <mat-form-field appearance="outline">
+                    <mat-select name="selectedCity" formControlName="city" placeholder="City">
+                      <mat-option *ngFor="let city of cities" [value]="city.id">{{
+                                          city.name
+                                    }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <p class="invalid"
+                  *ngIf="orderdeliveryForm.get('city').hasError('required') && orderDeliverySubmitted">
+                    City is required
+                  </p>
+                </div>
+                <div style="margin-left: 40px;">
+                  <label class="label">Address*</label><br>
+                  <mat-form-field appearance="outline">
+                    <input placeholder="Address" formControlName="address" matInput />
+                  </mat-form-field>
+                  <p class="invalid"
+                  *ngIf="orderdeliveryForm.get('address').hasError('required') && orderDeliverySubmitted">
+                    Address is required
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+          <mat-action-row>
+            <button mat-button class="btn btn-primary padding" (click)="nextStepOne()">Next</button>
+          </mat-action-row>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 1" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h3>Product Details</h3>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="body-wrap">
+          <div class="expense-item-form">
+            <form [formGroup]="productDetailsForm" [class.disable-inputs]="viewExpenseItem">
+              <div style="display: flex;">
+                <div>
+                  <label class="label">Order ID*</label><br>
+                  <mat-form-field appearance="outline">
+                    <input placeholder="Order ID" formControlName="orderId" matInput />
+                  </mat-form-field>
+                  <p class="invalid"
+                  *ngIf="productDetailsForm.get('orderId').hasError('required') && productDetailsSubmitted">
+                    Order ID is required
+                  </p>
+                </div>
+                <div style="margin-left: 40px;">
+                  <label class="label">No. of Products*</label><br>
+                  <mat-form-field appearance="outline">
+                    <input placeholder="Number of products" formControlName="numOfProducts" matInput />
+                  </mat-form-field>
+                  <p class="invalid"
+                  *ngIf="productDetailsForm.get('numOfProducts').hasError('required') && productDetailsSubmitted">
+                    No. of Products is required
+                  </p>
+                </div>
+              </div>
+              <div style="display: flex;">
+                <div>
+                  <label class="label">Product Type*</label><br>
+                  <mat-form-field appearance="outline">
+                    <mat-select formControlName="productType" panelClass="select-pos" placeholder="Product Type">
+                      <mat-option *ngFor="let type of productTypes" [value]="type.id">{{
+                                          type.name
+                                    }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <p class="invalid"
+                  *ngIf="productDetailsForm.get('productType').hasError('required') && productDetailsSubmitted">
+                    Product type is required
+                  </p>
+                </div>
+                <div style="margin-left: 40px;">
+                  <label class="label">Booking date*</label><br>
+                  <mat-form-field appearance="outline">
+                    <input readonly="true" placeholder="date" formControlName="bookingDate" matInput
+                      [matDatepicker]="picker" />
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker disabled="false"></mat-datepicker>
+                  </mat-form-field>
+                  <p class="invalid"
+                  *ngIf="productDetailsForm.get('bookingDate').hasError('required') && productDetailsSubmitted">
+                    Booking date is required
+                  </p>
+                </div>
+              </div>
+              <div class="report-row">
+                <div>
+                  <label class="label">Special instructions</label><br>
+                  <mat-form-field appearance="outline">
+                    <input placeholder="Special instructions" formControlName="instructions" matInput />
+                  </mat-form-field>
+                  <p class="invalid"
+                  *ngIf="productDetailsForm.get('instructions').hasError('required') && productDetailsSubmitted">
+                    Special instructions of Products is required
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+          <mat-action-row>
+            <button mat-button class="btn btn-primary padding" (click)="nextStepTwo()">Next</button>
+          </mat-action-row>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 2" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h3>Shipment Details</h3>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="body-wrap">
+          <div class="expense-item-form">
+            <form [formGroup]="shipmentDetailsForm" [class.disable-inputs]="viewExpenseItem">
+              <div style="display: flex;">
+                <div>
+                  <label class="label">Weight</label><br>
+                  <mat-form-field appearance="outline">
+                    <input placeholder="Weight in kgs" formControlName="weight" matInput />
+                  </mat-form-field>
+                  <p class="invalid"
+                  *ngIf="shipmentDetailsForm.get('weight').hasError('required') && shipmentDetailsSubmitted">
+                    Weight is required
+                  </p>
+                </div>
+                <div style="margin-left: 40px;">
+                  <label class="label">Cash on delivery*</label><br>
+                  <mat-form-field appearance="outline">
+                    <input placeholder="Cash on delivery" formControlName="cod" matInput />
+                  </mat-form-field>
+                  <p class="invalid"
+                  *ngIf="shipmentDetailsForm.get('cod').hasError('required') && shipmentDetailsSubmitted">
+                    Cash on delivery is required
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+          <mat-action-row>
+            <button mat-button class="btn btn-primary padding" (click)="placeOrder()">Place Order</button>
+          </mat-action-row>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+</div>

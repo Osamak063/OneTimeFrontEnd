@@ -1,0 +1,73 @@
+.order-wrapper ngx-simplebar {
+    height: calc(100% - 45px);
+    overflow: auto;
+}
+.order-wrapper ngx-simplebar.has-items {
+    height: calc(100% - 185px);
+}
+.order-wrapper .list-footer .actions {
+    display: flex;
+    justify-content: space-between;
+}
+.order-wrapper .list-footer .actions .btn-more {
+    color: #424671;
+    font-weight: 500;
+    height: 46px;
+    line-height: 46px;
+    vertical-align: top;
+    box-shadow: none;
+    padding-right: 40px;
+    text-transform: uppercase;
+}
+.order-wrapper .list-footer .actions .btn-more mat-icon {
+    position: absolute;
+    color: #424671;
+    font-size: 1rem;
+    background: #f9f9fb;
+    display: inline-grid;
+    align-items: center;
+    justify-content: center;
+    top: 10px;
+    right: 8px;
+}
+.order-wrapper .list-footer .actions .back:hover {
+    padding-right: 0;
+    max-width: 44px;
+}
+.order-wrapper .list-footer .actions .back:hover .sys-icon-arrow-left {
+    padding-right: 10px;
+}
+.order-wrapper .list-footer .actions button:first-of-type {
+    margin-right: 10px;
+}
+.order-wrapper .list-footer .top-blk {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.order-wrapper .list-footer .top-blk.sl {
+    display: block;
+}
+.order-wrapper .list-footer .top-blk.sl .total {
+    text-align: center;
+    text-transform: uppercase;
+    margin-right: 15px;
+    font-size: 0.7rem;
+}
+.order-wrapper .list-footer .top-blk .total {
+    width: 80px;
+    height: 48px;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: getColor(fonts-secondary);
+    font-weight: 500;
+    font-size: 0.8rem;
+    background: linear-gradient(45deg, #eaf2f7, #eff4f2);
+}
+
+.invalid{
+    color: red;
+}

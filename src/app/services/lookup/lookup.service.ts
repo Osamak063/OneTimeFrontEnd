@@ -11,4 +11,8 @@ export class LookupService {
   GetProductTypes() {
     return this.httpClient.get("https://localhost:5001/api/Lookup/GetProductTypeList");
   }
+
+  GetCities(){
+    return this.httpClient.get("https://localhost:5001/api/Lookup/GetCitiesList");
+  }
 }

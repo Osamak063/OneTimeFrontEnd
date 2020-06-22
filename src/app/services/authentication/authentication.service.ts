@@ -75,4 +75,8 @@ export class AuthenticationService {
     return JSON.parse(localStorage.getItem("user"))['role'];
   }
 
+  getClientPersonalId(){
+    return JSON.parse(localStorage.getItem("user"))['clientPersonalId'];
+  }
+
 }
