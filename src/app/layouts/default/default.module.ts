@@ -10,13 +10,15 @@ import { UserRequestsComponent } from './user-requests/user-requests.component';
 import { PlaceOrderComponent } from './place-order/place-order.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DasboardComponent,
     UserRequestsComponent,
-    PlaceOrderComponent
+    PlaceOrderComponent,
+    OrdersComponent
   ],
   imports: [
     CommonModule,

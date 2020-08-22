@@ -15,4 +15,8 @@ export class LookupService {
   GetCities(){
     return this.httpClient.get("https://localhost:5001/api/Lookup/GetCitiesList");
   }
+
+  GetOrderStatuses(){
+    return this.httpClient.get("https://localhost:5001/api/Lookup/GetOrderStatuses");
+  }
 }

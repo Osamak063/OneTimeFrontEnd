@@ -25,10 +25,11 @@
       <form class="trackingid-form">
         <mat-card-content>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Tracking ID">
+            <input name="trackingId" matInput placeholder="Tracking ID" [(ngModel)]="trackingId">
           </mat-form-field>
+          <p *ngIf="showTrackingIdError" style="color: red;">{{trackingIdErrorMessage}}</p>
         </mat-card-content>
-        <button mat-stroked-button style="color: blue;" class="btn-block">Track</button>
+        <button mat-stroked-button style="color: blue;" class="btn-block" (click)="onTrackAction()">Track</button>
       </form>
     </mat-card>
   

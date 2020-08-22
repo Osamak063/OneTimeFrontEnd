@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
         },
         {
           name: 'Orders',
-          navigation: ''
+          navigation: 'orders'
         }
       ];
     }

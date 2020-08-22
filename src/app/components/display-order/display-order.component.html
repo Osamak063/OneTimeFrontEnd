@@ -1,0 +1,38 @@
+<div class="login-wrapper background" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box" style="height: 600px;">
+
+        <img src="assets\logo2.jpg" style="width: 330px; height: 80px;">
+        <mat-card-header>
+        </mat-card-header>
+
+
+        <mat-card-content>
+            <h2>Order Details</h2>
+            <table style="width: 100%;" *ngIf="showOrderDetails">
+                <thead>
+                    <th>Consignee Name</th>
+                    <th>Address</th>
+                </thead>
+                <tr>
+                    <td> 
+                        {{order.consigneeName}}
+                    </td>
+                    <td>
+                        {{order.address}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cash on delivery</th>
+                    <td>
+                        {{order.cashOnDelivery}}
+                    </td>
+                    <th>Order Status</th>
+                    <td>
+                        {{order.orderStatusDesc}}
+                    </td>
+                </tr>
+            </table>
+            <p *ngIf="!showOrderDetails">{{errorMessage}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>

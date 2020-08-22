@@ -26,6 +26,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LookupService } from './services/lookup/lookup.service';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { DisplayOrderComponent } from './components/display-order/display-order.component';
 
 
 
@@ -35,6 +36,7 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     AppComponent,
     LogInComponent,
     RegisterComponent,
+    DisplayOrderComponent,
   ],
   imports: [
     BrowserModule,

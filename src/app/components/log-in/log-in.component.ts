@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
@@ -13,6 +13,9 @@ export class LogInComponent implements OnInit {
   username: string;
   showError: boolean = false;
   ErrorMessage: string = "";
+  trackingId: string = "";
+  showTrackingIdError: boolean = false;
+  trackingIdErrorMessage : string = "";
   constructor(
     private router: Router,
     private authService: AuthenticationService) { }
@@ -46,6 +49,25 @@ export class LogInComponent implements OnInit {
     this.router.navigate(['/register'])
       .then(success => console.log('navigation success?', success))
       .catch(console.error);
+  }
+
+  onTrackAction() {
+    console.log(this.trackingId);
+    if (this.trackingId.length === 0) {
+      this.showTrackingIdError = true;
+      this.trackingIdErrorMessage = "Tracking Id required.";
+      return
+    }
+    let navExtras: NavigationExtras = {
+      queryParams: { "trackingId": this.trackingId }
+    };
+    this.router.navigate(['/display-order'], {queryParams : {trackingId : this.trackingId}})
+      .then(success => console.log('navigation success?', success))
+      .catch(()=>{
+        console.error
+        this.showTrackingIdError = true;
+        this.trackingIdErrorMessage = "Invalid Tracking Id.";
+      });
   }
 
 }

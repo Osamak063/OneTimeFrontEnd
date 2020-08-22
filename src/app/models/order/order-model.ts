@@ -12,3 +12,16 @@ export class Order {
     CashOnDelivery : number;
     ClientPersonalId : number; 
 }
+
+export class GetOrder extends Order {
+    Id : number;
+    TrackingId : number;
+    OrderStatusId : number;
+}
+
+export class DisplayOrder {
+    ConsigneeName : string;
+    Address : string;
+    CashOnDelivery : string;
+    OrderStatusDesc : string;
+}

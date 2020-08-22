@@ -90,7 +90,7 @@ export class PlaceOrderComponent implements OnInit {
         CashOnDelivery: parseInt(this.shipmentDetailsForm.get('cod').value),
         ClientPersonalId : this.authService.getClientPersonalId()
       };
-      this.orderService.PlaceOrder(order).subscribe(res=>{
+      this.orderService.placeOrder(order).subscribe(res=>{
         console.log('successfully placed an order');
       },error=>{
         console.log('error placing an order');
